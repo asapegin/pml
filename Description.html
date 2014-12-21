@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="LibreOffice 4.1.3.2 (Linux)">
+	<META NAME="AUTHOR" CONTENT="vampire ">
+	<META NAME="CREATED" CONTENT="20141221;185617117133036">
+	<META NAME="CHANGEDBY" CONTENT="vampire ">
+	<META NAME="CHANGED" CONTENT="20141221;191433679877514">
+	<STYLE TYPE="text/css">
+	<!--
+		@page { margin: 0.79in }
+		P { margin-bottom: 0.08in }
+		A:link { so-language: zxx }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-US" DIR="LTR">
+<P STYLE="margin-bottom: 0in">To solve the task, I trained my model
+in two different ways – using Random Forest and Naive Bayes
+approaches. The authors of the paper mentioned on the dataset
+description page achieved quite a high accuracy using Random Forest
+approach. However, I was curious, how Naive Bayes will perform in
+comparison with their method.</P>
+<P STYLE="margin-bottom: 0in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in">The training of Naive Bayes without any
+pre-processing has shown 0.775 accuracy with 0.7119 Kappa. I tried to
+improve it using pre-processing with PCA and reached 0.7822 accuracy
+with 0.7267 Kappa. To further improve it, I resampled the data and
+used 99% of the dataset for the training. This helped to improve the
+model again, but only up to 0.799 accuracy and 0.7474 Kappa.<BR><BR>80%
+accuracy is quite a good result for the prediction based on Naive
+Bayes. However, the Random Forest approach showed 0.9995 accuracy and
+0.9994 Kappa.<BR><BR>Predictions from Naive Bayes model:</P>
+<P STYLE="margin-bottom: 0in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in">B C C A A D D B A A B C B A D E A B B
+B<BR><BR>Predictions from random forest model:<BR><BR>B A B A A E D B
+A A B C B A E E A B B B</P>
+<P STYLE="margin-bottom: 0in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in">So, 4 of 20 predictions are different
+for these models, which exactly corresponds to the proportion of
+accuracy of 2 models (0.99 for Random Forest, 0.79 for Naive Bayes)</P>
+<P STYLE="margin-bottom: 0in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in">Please see the code in R, as well as
+confusion matrices in the repository for further details.</P>
+</BODY>
+</HTML>

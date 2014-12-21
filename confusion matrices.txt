@@ -1,0 +1,151 @@
+# ###############
+# ############### 1
+# ###############
+# apply Naive Bayes on all features without id, no preprocessing
+
+model = train(classe ~ ., data = training[,-1],method="nb")
+
+Confusion Matrix and Statistics
+
+          Reference
+Prediction    A    B    C    D    E
+         A 1607   11   38   18    0
+         B  251  711  173    4    0
+         C  103   53  870    0    0
+         D  194    2  169  571   28
+         E   74  123   54   29  802
+
+Overall Statistics
+                                          
+               Accuracy : 0.775           
+                 95% CI : (0.7641, 0.7856)
+    No Information Rate : 0.3788          
+    P-Value [Acc > NIR] : < 2.2e-16       
+                                          
+                  Kappa : 0.7119          
+ Mcnemar's Test P-Value : < 2.2e-16       
+
+Statistics by Class:
+
+                     Class: A Class: B Class: C Class: D Class: E
+Sensitivity            0.7210   0.7900   0.6672  0.91801   0.9663
+Specificity            0.9817   0.9141   0.9659  0.92533   0.9446
+Pos Pred Value         0.9600   0.6242   0.8480  0.59232   0.7412
+Neg Pred Value         0.8523   0.9602   0.9107  0.98964   0.9942
+Prevalence             0.3788   0.1529   0.2216  0.10569   0.1410
+Detection Rate         0.2731   0.1208   0.1478  0.09703   0.1363
+Detection Prevalence   0.2845   0.1935   0.1743  0.16381   0.1839
+Balanced Accuracy      0.8513   0.8521   0.8166  0.92167   0.9554
+
+# ###############
+# ############### 2
+# ###############
+# apply Naive Bayes on all features without id, preprocessing with pca
+model = train(classe ~ ., data = training[,-1], preProcess="pca",method="nb")
+
+Confusion Matrix and Statistics
+
+          Reference
+Prediction    A    B    C    D    E
+         A 1207  305  136   10   16
+         B   68  902  159    8    2
+         C   18  119  867   22    0
+         D    0   13  132  727   92
+         E    1    1   25  155  900
+
+Overall Statistics
+                                          
+               Accuracy : 0.7822          
+                 95% CI : (0.7714, 0.7926)
+    No Information Rate : 0.2277          
+    P-Value [Acc > NIR] : < 2.2e-16       
+                                          
+                  Kappa : 0.7267          
+ Mcnemar's Test P-Value : < 2.2e-16       
+
+Statistics by Class:
+
+                     Class: A Class: B Class: C Class: D Class: E
+Sensitivity            0.9328   0.6731   0.6573   0.7885   0.8911
+Specificity            0.8983   0.9479   0.9652   0.9522   0.9627
+Pos Pred Value         0.7210   0.7919   0.8450   0.7541   0.8318
+Neg Pred Value         0.9793   0.9077   0.9070   0.9604   0.9771
+Prevalence             0.2199   0.2277   0.2241   0.1567   0.1716
+Detection Rate         0.2051   0.1533   0.1473   0.1235   0.1529
+Detection Prevalence   0.2845   0.1935   0.1743   0.1638   0.1839
+Balanced Accuracy      0.9155   0.8105   0.8112   0.8704   0.9269
+
+
+
+# ###############
+# ############### 4
+# ###############
+# apply Naive Bayes on all features without id, preprocessing with PCA, 99% of data in training set
+model = train(classe ~ ., data = training[,-1], preProcess="pca",method="nb")
+
+Confusion Matrix and Statistics
+
+          Reference
+Prediction  A  B  C  D  E
+         A 42  8  4  0  1
+         B  2 29  5  0  1
+         C  1  1 30  2  0
+         D  0  1  3 22  6
+         E  0  0  0  4 32
+
+Overall Statistics
+                                         
+               Accuracy : 0.799          
+                 95% CI : (0.7356, 0.853)
+    No Information Rate : 0.232          
+    P-Value [Acc > NIR] : < 2.2e-16      
+                                         
+                  Kappa : 0.7474         
+ Mcnemar's Test P-Value : NA             
+
+Statistics by Class:
+
+                     Class: A Class: B Class: C Class: D Class: E
+Sensitivity            0.9333   0.7436   0.7143   0.7857   0.8000
+Specificity            0.9128   0.9484   0.9737   0.9398   0.9740
+Pos Pred Value         0.7636   0.7838   0.8824   0.6875   0.8889
+Neg Pred Value         0.9784   0.9363   0.9250   0.9630   0.9494
+Prevalence             0.2320   0.2010   0.2165   0.1443   0.2062
+Detection Rate         0.2165   0.1495   0.1546   0.1134   0.1649
+Detection Prevalence   0.2835   0.1907   0.1753   0.1649   0.1856
+Balanced Accuracy      0.9230   0.8460   0.8440   0.8627   0.8870
+
+# random forest:
+model <- train(classe~., data = training[,-1], method="rf",prox=FALSE)
+
+Confusion Matrix and Statistics
+
+          Reference
+Prediction    A    B    C    D    E
+         A 1674    0    0    0    0
+         B    0 1139    0    0    0
+         C    0    1 1024    1    0
+         D    0    0    0  964    0
+         E    0    0    0    1 1081
+
+Overall Statistics
+                                          
+               Accuracy : 0.9995          
+                 95% CI : (0.9985, 0.9999)
+    No Information Rate : 0.2845          
+    P-Value [Acc > NIR] : < 2.2e-16       
+                                          
+                  Kappa : 0.9994          
+ Mcnemar's Test P-Value : NA              
+
+Statistics by Class:
+
+                     Class: A Class: B Class: C Class: D Class: E
+Sensitivity            1.0000   0.9991   1.0000   0.9979   1.0000
+Specificity            1.0000   1.0000   0.9996   1.0000   0.9998
+Pos Pred Value         1.0000   1.0000   0.9981   1.0000   0.9991
+Neg Pred Value         1.0000   0.9998   1.0000   0.9996   1.0000
+Prevalence             0.2845   0.1937   0.1740   0.1641   0.1837
+Detection Rate         0.2845   0.1935   0.1740   0.1638   0.1837
+Detection Prevalence   0.2845   0.1935   0.1743   0.1638   0.1839
+Balanced Accuracy      1.0000   0.9996   0.9998   0.9990   0.9999
